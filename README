@@ -1,7 +1,7 @@
-deviant-seeder
+base-seeder
 ==============
 
-Deviant-seeder is a crawler for the Deviant network, which exposes a list
+base-seeder is a crawler for the base network, which exposes a list
 of reliable nodes via a built-in DNS server.
 
 Features:

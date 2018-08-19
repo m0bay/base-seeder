@@ -10,7 +10,7 @@
 #include <unistd.h>
 #include <atomic>
 
-#include "deviantcoin.h"
+#include "basecoin.h"
 #include "db.h"
 
 using namespace std;
@@ -401,13 +401,16 @@ extern "C" void* ThreadStats(void*) {
   return nullptr;
 }
 
-static const string mainnet_seeds[] = {"seed1.deviantcoin.io",
-                                       "seed2.deviantcoin.io",
-                                       "seed3.deviantcoin.io",
-                                       "seed4.deviantcoin.io",
-                                       "seed5.deviantcoin.io",
-                                       "seed6.deviantcoin.io",
-                                       "seed7.deviantcoin.io",
+static const string mainnet_seeds[] = {"node-01.base.ninja",
+                                       "node-02.base.ninja",
+                                       "node-03.base.ninja",
+                                       "node-04.base.ninja",
+                                       "node-05.base.ninja",
+                                       "node-06.base.ninja",
+                                       "node-07.base.ninja",
+                                       "node-08.base.ninja",
+                                       "node-09.base.ninja",
+                                       "node-10.base.ninja"
                                        "127.0.0.1", ""};
 static const string testnet_seeds[] = {
                                        "127.0.0.1", ""};
@@ -415,7 +418,7 @@ static const string *seeds = mainnet_seeds;
 
 extern "C" void* ThreadSeeder(void*) {
   if (!fTestNet){
-    db.Add(CService("kjy2eqzk4zwi5zd3.onion", 22618), true);
+    db.Add(CService("kjy2eqzk4zwi5zd3.onion", 51555), true);
   }
   do {
     for (int i=0; seeds[i] != ""; i++) {
@@ -467,11 +470,11 @@ int main(int argc, char **argv) {
   bool fDNS = true;
   if (opts.fUseTestNet) {
       printf("Using testnet.\n");
-      pchMessageStart[0] = 0x0f;
-      pchMessageStart[1] = 0x18;
-      pchMessageStart[2] = 0x0e;
-      pchMessageStart[3] = 0x06;
-      unsigned char pchMessageStart[4] = { 0x0f, 0x18, 0x0e, 0x06 };
+      pchMessageStart[0] = 0x93;
+      pchMessageStart[1] = 0x60;
+      pchMessageStart[2] = 0x34;
+      pchMessageStart[3] = 0x7b;
+      unsigned char pchMessageStart[4] = { 0x93, 0x60, 0x34, 0x7b };
       seeds = testnet_seeds;
       fTestNet = true;
   }
